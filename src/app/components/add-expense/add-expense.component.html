@@ -7,4 +7,5 @@
    </textarea>
 
   <button type="submit">Add expense</button>
+  <button *ngIf="expense.id" (click)="deleteExpense(expense.id)">Delete expense</button>
 </form>

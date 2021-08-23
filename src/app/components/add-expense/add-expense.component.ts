@@ -36,6 +36,13 @@ export class AddExpenseComponent implements OnInit {
     )
   }
 
-
+  deleteExpense(id: number) {
+    this._expenseService.deleteExpense(id).subscribe(
+      data => {
+        console.log("Deleted response ", data);
+        this._router.navigateByUrl("/expenses")
+      }
+    )
+  }
 
 }
