@@ -19,6 +19,10 @@ const routers: Routes = [
     component: AddExpenseComponent
   },
   {
+    path: "editExpense/:id",
+    component: AddExpenseComponent
+  },
+  {
     path: "",
     redirectTo: '/expenses',
     pathMatch: 'full'
