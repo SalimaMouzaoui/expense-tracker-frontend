@@ -1,6 +1,27 @@
-<a routerLink="/addExpense">Add expense</a>
-<div *ngFor="let expense of expenses">
-  <h3>{{expense.expense}}</h3>
-  <p>{{expense.amount | currency: 'INR'}}</p>
-  <a routerLink="/editExpense/{{expense.id}}">Edit</a>
+<div class="row">
+  <div class="col-md-4">
+    <input type="text" [(ngModel)]="filters.keyword" name="keyword" (input)="listExpenses()" />
+  </div>
+  <div class="col-md-4">
+    <select name="sortBy" [(ngModel)]="filters.sortBy" (change)="listExpenses()" class="form-control">
+      <option>Name</option>
+      <option>Amount</option>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <a class="btn btn-primary text-light" routerLink="/addExpense">Add expense</a>
+  </div>
+</div>
+<div>
+  <div class="card mt-1" *ngFor="let expense of expenses">
+    <a class="card-body flex" routerLink="/editExpense/{{expense.id}}">
+      <span class="text-capitalize font-weight-bold">{{expense.expense}}</span>
+      <span class="float-right mr-2 badge badge-pill badge-warning font-weight-bold amount">
+        {{expense.amount | currency: 'INR'}}
+      </span>
+    </a>
+    <div class="card-footer">
+      <button class="btn btn-danger" (click)="deleteExpense(expense.id)" style="width: 10%;">Delete </button>
+    </div>
+  </div>
 </div>
